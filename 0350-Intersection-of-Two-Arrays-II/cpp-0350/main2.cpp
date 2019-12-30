@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 /// Using Hash Map
 /// Time Complexity: O(len(nums1) + len(nums2)*log(len(nums1)))
 /// Space Complexity: O(len(nums1))
@@ -19,7 +20,7 @@ public:
         for(int num: nums1)
             record.insert(num);
 
-        multiset<int> result;
+        multiseSt<int> result;
         for(int num: nums2){
             multiset<int>::iterator iter = record.find(num);
             if( iter != record.end()){
@@ -32,15 +33,19 @@ public:
     }
 };
 
+
+void print_vec(const vector<int>& vec){
+    for(int e: vec)
+        cout << e << " ";
+    cout << endl;
+}
+
 int main() {
 
-    int nums1[] = {1, 2, 2, 1};
-    vector<int> vec1(nums1, nums1 + sizeof(nums1)/sizeof(int));
+    vector<int> nums1 = {1, 2, 2, 1};
+    vector<int> nums2 = {2, 2};
 
-    int nums2[] = {2, 2};
-    vector<int> vec2(nums2, nums2 + sizeof(nums2)/sizeof(int));
-
-    printVec(Solution().intersect(vec1, vec2));
+    print_vec(Solution().intersect(nums1, nums2));
 
     return 0;
 }

@@ -6,16 +6,17 @@
 
 using namespace std;
 
+
 /// Binary Search
-/// Time Complexity: O(long(MAX_INT))
+/// Time Complexity: O(log(MAX_INT))
 /// Space Complexity: O(1)
 class Solution {
 public:
     int mySqrt(int x) {
 
-        int l = 0, r = INT_MAX - 1;
+        int l = 0, r = x;
         while(l < r){
-            long long mid = l + (r - l + 1) / 2;
+            long long mid = l + ((long long)r - l + 1) / 2;
             if(mid * mid <= (long long)x)
                 l = mid;
             else
@@ -24,6 +25,7 @@ public:
         return l;
     }
 };
+
 
 int main() {
 

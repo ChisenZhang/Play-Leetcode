@@ -8,8 +8,8 @@
 
 using namespace std;
 
+
 // Sliding Window
-// Another Implementation
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 class Solution {
@@ -22,34 +22,27 @@ public:
         int sum = 0;
         int res = nums.size() + 1;
 
-        while(r + 1 < nums.size()){
+        while(l < nums.size()){
 
-            while(r + 1 < nums.size() && sum < s)
+            if(r + 1 < nums.size() && sum < s)
                 sum += nums[++r];
+            else
+                sum -= nums[l++];
 
             if(sum >= s)
                 res = min(res, r - l + 1);
-
-            while(l < nums.size() && sum >= s){
-                sum -= nums[l++];
-                if(sum >= s)
-                    res = min(res, r - l + 1);
-            }
         }
 
-        if(res == nums.size() + 1)
-            return 0;
-        return res;
+        return res == nums.size() + 1 ? 0 : res;
     }
 };
 
+
 int main() {
 
-    int nums[] = {2, 3, 1, 2, 4, 3};
-    vector<int> vec( nums, nums + sizeof(nums)/sizeof(int) );
-    int s = 7;
-
-    cout << Solution().minSubArrayLen(s, vec) << endl;
+    vector<int> nums1 = {2, 3, 1, 2, 4, 3};
+    int s1 = 7;
+    cout << Solution().minSubArrayLen(s1, nums1) << endl;
 
     return 0;
 }

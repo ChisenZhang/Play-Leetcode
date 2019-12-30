@@ -3,7 +3,6 @@
 /// Time   : 2017-11-13
 
 // Sliding Window
-// Another Implementation
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 public class Solution4 {
@@ -17,24 +16,18 @@ public class Solution4 {
         int sum = 0;
         int res = nums.length + 1;
 
-        while(r + 1 < nums.length){
+        while(l < nums.length){
 
-            while(r + 1 < nums.length && sum < s)
+            if(r + 1 < nums.length && sum < s)
                 sum += nums[++r];
+            else
+                sum -= nums[l++];
 
             if(sum >= s)
                 res = Math.min(res, r - l + 1);
-
-            while(l < nums.length && sum >= s){
-                sum -= nums[l++];
-                if(sum >= s)
-                    res = Math.min(res, r - l + 1);
-            }
         }
 
-        if(res == nums.length + 1)
-            return 0;
-        return res;
+        return res == nums.length + 1 ? 0 : res;
     }
 
     public static void main(String[] args) {

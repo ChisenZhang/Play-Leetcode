@@ -1,6 +1,6 @@
 /// Source : https://leetcode.com/problems/merge-sorted-array/
 /// Author : liuyubobobo
-/// Time   : 2016-12-06
+/// Time   : 2019-02-07
 
 #include <iostream>
 #include <vector>
@@ -8,36 +8,25 @@
 
 using namespace std;
 
-/// Standard merge process in merge sort
-/// Time Complexity: O(n)
-/// Space Complexity: O(n)
+
+/// Sorting
+/// Time Complexity: O(nlogn)
+/// Space Complexity: O(1)
 class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
 
         assert(nums1.size() == m + n && nums2.size() == n);
 
-        for(int i = n + m - 1 ; i >= n ; i -- )
-            nums1[i] = nums1[i - n];
+        for(int i = 0; i < n ; i ++ )
+            nums1[m + i] = nums2[i];
 
-        int i = n;  // pointer for nums1 [n, n+m)
-        int j = 0;  // pointer for nums2 [0, n)
-        int k = 0;  // pointer merged nums1 [0, n+m)
-        while( k < n + m ){
-            if( i >= n+m )
-                nums1[k++] = nums2[j++];
-            else if( j >= n )
-                nums1[k++] = nums1[i++];
-            else if( nums1[i] < nums2[j] )
-                nums1[k++] = nums1[i++];
-            else
-                nums1[k++] = nums2[j++];
-        }
+        sort(nums1.begin(), nums1.end());
     }
 };
 
 
-void printVec(const vector<int>& vec){
+void print_vec(const vector<int>& vec){
     for(int e: vec)
         cout << e << " ";
     cout << endl;
@@ -55,7 +44,7 @@ int main() {
         nums1.push_back(0);
 
     Solution().merge(nums1, m, nums2, n);
-    printVec(nums1);
+    print_vec(nums1);
 
     return 0;
 }

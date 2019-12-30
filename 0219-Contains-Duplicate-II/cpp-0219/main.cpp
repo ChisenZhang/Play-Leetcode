@@ -40,17 +40,16 @@ public:
 };
 
 
-void printBool(bool b){
+void print_bool(bool b){
     cout << (b ? "True" : "False") << endl;
 }
 
 int main() {
 
-    int nums[] = {1, 2, 1};
-    vector<int> vec(nums, nums + sizeof(nums)/sizeof(int));
+    vector<int> nums = {1, 2, 1};
     int k = 1;
 
-    printBool(Solution().containsNearbyDuplicate(vec, k));
+    print_bool(Solution().containsNearbyDuplicate(nums, k));
 
     return 0;
 }

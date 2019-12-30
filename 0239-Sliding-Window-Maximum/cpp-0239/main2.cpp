@@ -9,7 +9,8 @@
 
 using namespace std;
 
-/// Using Decreasing Queue
+
+/// Using Deque as a Decreasing Queue
 /// Time Complexity: O(n)
 /// Space Complexity: O(n)
 class Solution {
